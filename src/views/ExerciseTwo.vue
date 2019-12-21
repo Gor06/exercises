@@ -17,7 +17,7 @@
         to the column below.
       </v-col>
       <v-col cols="12">
-        <!-- Your code here -->
+        <Counter :color="color"> TUMO</Counter>
       </v-col>
     </v-row>
 
@@ -41,7 +41,9 @@
         you click on one, does it affect the count of the others?
       </v-col>
       <v-col cols="12">
-        <!-- Your code here -->
+        <Counter :color="item"/>
+        <Counter :color="item"/>
+        <Counter :color="item"/>
       </v-col>
     </v-row>
 
@@ -55,7 +57,7 @@
         <a href="https://vuejs.org/v2/guide/components-slots.html" target="_blank">For reference</a>
       </v-col>
       <v-col cols="12">
-        <!-- Your code here -->
+        <v-select :items="items" label="colors" v-model="item" dense> </v-select>{{ item }}
       </v-col>
     </v-row>
 
@@ -111,10 +113,30 @@
 </template>
 
 <script>
+import Counter from '../components/Counter.vue'
+
 export default {
   name: 'ExerciseTwo',
-
+  components: {
+    Counter
+  },
   data: () => ({
+    color:'red',
+    items: [
+      {
+        text:'Karmir', value:'red'
+      },
+      {
+        text:'Kapuyt', value:'blue'
+      },
+      {
+        text:'Kanach', value:'green'
+      },
+      {
+        text:'Deghin', value:'yellow'
+      }
+    ],
+    item: null
   })
 }
 </script>

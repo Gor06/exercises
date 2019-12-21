@@ -35,7 +35,7 @@
         <a href="https://vuetifyjs.com/en/components/text-fields#icons" target="_blank">For reference</a>
       </v-col>
       <v-col cols="12">
-        <!-- Your code here -->
+          <v-text-field solo label="Append" append-icon="place"></v-text-field>
       </v-col>
     </v-row>
 
@@ -50,7 +50,7 @@
     </v-row>
 
     <v-divider class="my-4"/>
-
+          <v-text-field append-icon="add" v-model="student"  solo label="add" type="text" @click:append="sendMesage"></v-text-field>
     <v-row>
       <v-col cols="12">
         <h2>Part 5</h2>
@@ -61,7 +61,11 @@
     </v-row>
 
     <v-divider class="my-4"/>
-
+     <v-list>
+      <v-list-item v-for="student in studentLast" :key="student.name">
+          {{ student.name + student.lastName }}
+      </v-list-item>
+      </v-list>
     <v-row>
       <v-col cols="12">
         <h2>Part 6</h2>
@@ -71,7 +75,17 @@
     </v-row>
 
     <v-divider class="my-4"/>
-
+        <v-form>
+        <v-col cols="6">
+          <v-text-field label="Name"  v-model="studentName"  single-line solo></v-text-field>
+        </v-col>
+          <v-col cols="6">
+          <v-text-field label="Lastname" v-model="studentLastName" single-line solo></v-text-field>
+          </v-col>
+          <v-col>
+            <v-btn big color="primary"  @click="addStudent" >Submit</v-btn>
+          </v-col>
+        </v-form>
     <v-row>
       <v-col cols="12">
         <h2>Part 7</h2>
@@ -85,9 +99,29 @@
 <script>
 export default {
   name: 'ExerciseThree',
-
   data: () => ({
-    students: []
-  })
+    student:null,
+    studentName:null,
+    studentLastName:null,
+    students: ['Gor' , 'Davit' , 'Rob'],
+    studentLast:[
+    {
+      name:"Gor" , lastnNme:"Margaryan"
+    },{
+      name:"Davit" , lastName:"Margaryan"
+    },{
+      name:"Rob" , lastName:"Margaryan"
+    }]
+  }),
+  methods:{
+    sendMesage: function (){
+    this.students.push(this.student)
+    },
+    addStudent: function (){
+    this.studentLast.push( { name: this.studentName , lastName: this.studentLastName } )
+    this.studentName = null
+    this.studentLastName = null
+    }
+  }
 }
 </script>

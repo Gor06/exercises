@@ -20,7 +20,7 @@
         column below so we can see what it looks like.
       </v-col>
       <v-col cols="12">
-        <!-- Your code here -->
+          <Login/>
       </v-col>
     </v-row>
 
@@ -45,7 +45,7 @@
         Just as above, import it and add it below so we can see what it looks like.
       </v-col>
       <v-col cols="12">
-        <!-- Your code here -->
+        <Registration/>
       </v-col>
     </v-row>
 
@@ -92,7 +92,17 @@
         <a href="https://vuetifyjs.com/en/components/tabs" target="_blank">For reference</a>
       </v-col>
       <v-col cols="8">
-        <!-- Your code here -->
+<v-tabs background-color="white" color="purple" center>
+           <v-tab>Register</v-tab>
+           <v-tab-item>
+             <Registration/>
+           </v-tab-item>
+           <v-tab>Log in</v-tab>
+           <v-tab-item>
+             <Login/>
+           </v-tab-item>
+           </v-tabs>
+
       </v-col>
     </v-row>
 
@@ -110,10 +120,13 @@
 </template>
 
 <script>
+import Login from '../components/Login.vue'
+import Registration from '../components/registration.vue'
 export default {
   name: 'ExerciseFour',
-
-  data: () => ({
-  })
+  components: {
+    Login,
+    Registration,
+  }
 }
 </script>
